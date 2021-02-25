@@ -11,17 +11,19 @@ import java.util.Set;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Variant extends Item implements  Serializable {
+
 
     @ManyToOne
     @JoinColumn
     Product product;
 
-    @CollectionTable
-    @ElementCollection
-    @OrderColumn
-    List<Image> images;
+//    @CollectionTable
+//    @ElementCollection
+//    @OrderColumn
+//    List<Image> images;
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     Set<VariantSize> variantSizes;

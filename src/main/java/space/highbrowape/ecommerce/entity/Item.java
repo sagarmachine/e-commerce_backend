@@ -11,22 +11,22 @@ import java.util.Date;
 @MappedSuperclass
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue//(strategy = GenerationType.IDENTITY)
     long id;
 
     @Column(nullable = false)
     String name;
 
-    @Column
+
     @Embedded
     Image image;
 
-    @Column
+
     @Embedded
     Metadata metadata;
 

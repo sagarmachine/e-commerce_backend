@@ -2,10 +2,7 @@ package space.highbrowape.ecommerce.entity;
 
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -13,8 +10,11 @@ import java.util.Set;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Size extends Item implements  Serializable{
+
+
 
     @OneToMany(mappedBy ="size",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     Set<VariantSize> variantSizes;

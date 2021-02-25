@@ -10,17 +10,18 @@ import java.io.Serializable;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class Image implements Serializable {
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String thumbnail;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String main;
 
-    @Column(nullable = false)
-    String delete;
+//    @Column(nullable = false)
+    String deleteUrl;
 
 
 }

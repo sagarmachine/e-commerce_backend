@@ -10,8 +10,12 @@ import java.util.Set;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class MegaCategory extends Item implements  Serializable {
+
+
+
     @ManyToOne
     @JoinColumn
     GigaCategory gigaCategory;

@@ -10,8 +10,11 @@ import java.util.Set;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Product extends Item implements  Serializable {
+
+
 
     @ManyToOne
     @JoinColumn

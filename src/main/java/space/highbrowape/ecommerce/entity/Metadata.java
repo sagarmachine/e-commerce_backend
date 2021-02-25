@@ -11,13 +11,15 @@ import java.util.List;
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class Metadata implements Serializable {
 
-    @Column
+
+//    @Column
     String description;
 
-    @CollectionTable(name = "note")
+    @CollectionTable
     @ElementCollection
     @OrderColumn
     List<String> notes;
