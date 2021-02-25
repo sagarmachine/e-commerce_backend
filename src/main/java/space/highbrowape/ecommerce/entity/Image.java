@@ -14,13 +14,13 @@ import java.io.Serializable;
 @Embeddable
 public class Image implements Serializable {
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     String thumbnail;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     String main;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     String deleteUrl;
 
 
