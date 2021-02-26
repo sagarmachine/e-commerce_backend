@@ -20,6 +20,4 @@ public class TeraCategory extends Item implements  Serializable {
     Set<GigaCategory> gigaCategories;
 
 
-
-
 }

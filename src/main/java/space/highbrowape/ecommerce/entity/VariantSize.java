@@ -18,7 +18,7 @@ public class VariantSize {
     long id;
 
     @Column(nullable = false)
-    int stock;
+    long stock;
 
     @JoinColumn
     @ManyToOne

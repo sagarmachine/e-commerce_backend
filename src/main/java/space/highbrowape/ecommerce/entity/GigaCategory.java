@@ -16,6 +16,9 @@ public class GigaCategory extends Item implements  Serializable {
 
 
 
+//    @Id
+//    @GeneratedValue//(strategy = GenerationType.IDENTITY)
+//    long id;
 
     @ManyToOne
     @JoinColumn

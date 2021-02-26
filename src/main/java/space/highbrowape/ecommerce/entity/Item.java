@@ -22,17 +22,22 @@ public class Item {
     @Column(nullable = false)
     String name;
 
-
     @Embedded
     Image image;
 
-
     @Embedded
-    Metadata metadata;
+    MetaData metadata;
 
     @CreationTimestamp
     @JsonFormat(pattern = "dd/MM/yyyy")
     Date addedOn;
+
+    @CreationTimestamp
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    Date updatedOn;
+
+
 
 
 }
