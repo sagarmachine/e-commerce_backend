@@ -15,17 +15,27 @@ import java.util.Set;
 @Entity
 public class Variant extends Item implements  Serializable {
 
+    @Column(nullable = false)
+    private double costPrice;
+
+    @Column(nullable = false)
+    private double sellingPrice;
+
+
+    @Embedded
+    private Image image;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<Image> images;
 
     @ManyToOne
     @JoinColumn
     Product product;
 
-//    @CollectionTable
-//    @ElementCollection
-//    @OrderColumn
-//    List<Image> images;
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<VariantSize> variantSizes;
+    Set<VariantSize> variantSizeSet;
 
 }
