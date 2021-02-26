@@ -27,11 +27,11 @@ public class MetaData implements Serializable {
     @OrderColumn
     List<String> notes;
 
-    @CreationTimestamp
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     Date addedOn;
 
-    @CreationTimestamp
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     Date updatedOn;
 

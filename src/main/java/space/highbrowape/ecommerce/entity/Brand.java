@@ -18,6 +18,6 @@ public class Brand extends Item implements  Serializable {
     @OneToMany(mappedBy ="brand",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     Set<Product> products;
 
-    
+
 
 }
