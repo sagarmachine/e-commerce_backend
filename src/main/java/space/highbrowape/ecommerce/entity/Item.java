@@ -28,14 +28,6 @@ public class Item {
     @Embedded
     MetaData metadata;
 
-    @CreationTimestamp
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    Date addedOn;
-
-    @CreationTimestamp
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    Date updatedOn;
 
 
 
