@@ -14,8 +14,6 @@ import java.util.Set;
 @Entity
 public class MegaCategory extends Item implements  Serializable {
 
-
-
     @ManyToOne
     @JoinColumn
     GigaCategory gigaCategory;
