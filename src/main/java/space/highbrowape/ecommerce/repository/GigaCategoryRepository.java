@@ -7,4 +7,5 @@ import space.highbrowape.ecommerce.entity.GigaCategory;
 
 
 public interface GigaCategoryRepository extends JpaRepository<GigaCategory,Long> {
+    Object findByName(String toUpperCase);
 }
