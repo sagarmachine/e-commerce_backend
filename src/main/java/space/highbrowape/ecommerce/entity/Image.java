@@ -1,5 +1,6 @@
 package space.highbrowape.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -21,6 +22,7 @@ public class Image implements Serializable {
     String main;
 
     @Column(nullable = false)
+    @JsonIgnore
     String deleteUrl;
 
 

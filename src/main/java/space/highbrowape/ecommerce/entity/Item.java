@@ -6,7 +6,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+
 
 @MappedSuperclass
 @Getter
@@ -19,7 +20,8 @@ public class Item {
     @GeneratedValue//(strategy = GenerationType.IDENTITY)
     long id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Name cannot be blank")
+    @Column(nullable = false,unique=true)
     String name;
 
     @Embedded
@@ -27,6 +29,13 @@ public class Item {
 
     @Embedded
     MetaData metadata;
+
+    public Item(String name, Image image, MetaData metadata){
+        this.name=name;
+        this.image=image;
+        this.metadata=metadata;
+
+    }
 
 
 
