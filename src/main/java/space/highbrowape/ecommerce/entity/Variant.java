@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +30,7 @@ public class Variant extends Item implements  Serializable {
     @CollectionTable
     @ElementCollection
     @OrderColumn
-    List<Image> images;
+    List<Image> images= new ArrayList<>();
 
     @ManyToOne
     @JoinColumn
@@ -37,6 +39,6 @@ public class Variant extends Item implements  Serializable {
 
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<VariantSize> variantSizeSet;
+    Set<VariantSize> variantSizeSet= new HashSet<>();
 
 }

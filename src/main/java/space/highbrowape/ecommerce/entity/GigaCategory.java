@@ -9,11 +9,11 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
+//@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class GigaCategory extends Item implements  Serializable {
+public class GigaCategory extends Category implements  Serializable {
 
 
 
@@ -24,7 +24,10 @@ public class GigaCategory extends Item implements  Serializable {
     TeraCategory teraCategory;
 
     @OneToMany(mappedBy ="gigaCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<MegaCategory> megaCategories;
+    Set<MegaCategory> megaCategories= new HashSet<>();
+
+    @OneToMany(mappedBy ="category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    Set<Product> products= new HashSet<>();
 
     public GigaCategory(String name, Image image, MetaData metaData){
         super(name,image,metaData);

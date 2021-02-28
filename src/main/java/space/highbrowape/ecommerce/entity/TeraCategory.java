@@ -9,17 +9,20 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Builder
+//@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class TeraCategory extends Item implements  Serializable {
+public class TeraCategory extends Category implements  Serializable {
 
 
 
 
     @OneToMany(mappedBy ="teraCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<GigaCategory> gigaCategories;
+    Set<GigaCategory> gigaCategories= new HashSet<>();
+
+    @OneToMany(mappedBy ="category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    Set<Product> products= new HashSet<>();
 
     public TeraCategory(String name, Image image, MetaData metaData){
         super(name,image,metaData);

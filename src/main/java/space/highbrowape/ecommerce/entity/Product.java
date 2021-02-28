@@ -18,7 +18,7 @@ public class Product extends Item implements  Serializable {
 
     @ManyToOne
     @JoinColumn
-    MegaCategory megaCategory;
+    Category category;
 
     @ManyToOne
     @JoinColumn
