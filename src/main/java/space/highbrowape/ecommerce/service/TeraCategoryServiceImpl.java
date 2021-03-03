@@ -40,7 +40,8 @@ public class TeraCategoryServiceImpl implements ITeraCategoryService {
         metaData.setAddedOn(new java.util.Date());
         metaData.setUpdatedOn(new java.util.Date());
 
-        Image image=utilService.uploadImage(file);//new Image("abc","pqr","xyz");
+        //Image image=utilService.uploadImage(file);
+        Image image=new Image("abc","pqr","xyz");
         TeraCategory teraCategory = new TeraCategory(addCategoryDto.getName().toUpperCase(),image, metaData);
 
         try {

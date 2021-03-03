@@ -19,8 +19,7 @@ public class MegaCategory extends Category implements  Serializable {
     @JoinColumn
     GigaCategory gigaCategory;
 
-    @OneToMany(mappedBy ="category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<Product> products= new HashSet<>();
+
 
     public MegaCategory(String name, Image image, MetaData metaData){
         super(name,image,metaData);

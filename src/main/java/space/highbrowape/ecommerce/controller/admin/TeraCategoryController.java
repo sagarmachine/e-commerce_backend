@@ -72,5 +72,7 @@ public class TeraCategoryController {
         return new ResponseEntity<>(teraCategoryService.getCategory(id), HttpStatus.OK);
     }
 
+
+
 }
 

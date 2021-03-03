@@ -23,6 +23,7 @@ public class Variant extends Item implements  Serializable {
     @Column(nullable = false)
     private double sellingPrice;
 
+    boolean complete=false;
 
     @Embedded
     private Image image;

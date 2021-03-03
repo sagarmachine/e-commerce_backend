@@ -19,5 +19,11 @@ public class Brand extends Item implements  Serializable {
     Set<Product> products;
 
 
+    public Brand(String name, Image image, MetaData metaData) {
+        super(name,image,metaData);
+    }
 
+    public Brand(long id, String name, Image image, MetaData metaData) {
+        super(id,name,image,metaData);
+    }
 }

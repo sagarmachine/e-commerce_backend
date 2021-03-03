@@ -1,5 +1,6 @@
 package space.highbrowape.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,13 +22,14 @@ public class GigaCategory extends Category implements  Serializable {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     TeraCategory teraCategory;
+
 
     @OneToMany(mappedBy ="gigaCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     Set<MegaCategory> megaCategories= new HashSet<>();
 
-    @OneToMany(mappedBy ="category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<Product> products= new HashSet<>();
+
 
     public GigaCategory(String name, Image image, MetaData metaData){
         super(name,image,metaData);
