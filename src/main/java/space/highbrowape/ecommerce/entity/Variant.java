@@ -1,6 +1,7 @@
 package space.highbrowape.ecommerce.entity;
 
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +24,9 @@ public class Variant extends Item implements  Serializable {
     @Column(nullable = false)
     private double sellingPrice;
 
+
+
+//    @Formula("select")
     boolean complete=false;
 
     @Embedded
@@ -36,6 +40,27 @@ public class Variant extends Item implements  Serializable {
     @ManyToOne
     @JoinColumn
     Product product;
+
+    Integer limit;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> extraChargeDetails;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> deliveryDetails;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> returnDetails;
+
+
+    @Enumerated(EnumType.STRING)
+    Gender gender=Gender.N;//default
 
 
 
