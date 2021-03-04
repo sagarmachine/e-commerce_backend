@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class Image implements Serializable {
+public class Image {
 
     @Column(nullable = false)
     String thumbnail;

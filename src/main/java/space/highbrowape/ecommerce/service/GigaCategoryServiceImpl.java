@@ -70,7 +70,7 @@ public class GigaCategoryServiceImpl implements IGigaCategoryService {
 
         GigaCategory gigaCategory=gigaCategoryOptional.get();
         TeraCategory teraCategory=gigaCategory.getTeraCategory();
-        teraCategory.getGigaCategories().remove(gigaCategory);
+        teraCategory.getCategories().remove(gigaCategory);
 
         MetaData metaData = mapper.map(updateCategoryDto, MetaData.class);
         metaData.setUpdatedOn(new java.util.Date());

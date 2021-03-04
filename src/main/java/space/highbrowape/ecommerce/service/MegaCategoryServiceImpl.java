@@ -67,7 +67,7 @@ public class MegaCategoryServiceImpl implements IMegaCategoryService{
 
         MegaCategory megaCategory=megaCategoryOptional.get();
         GigaCategory gigaCategory=megaCategory.getGigaCategory();
-        gigaCategory.getMegaCategories().remove(megaCategory);
+        gigaCategory.getCategories().remove(megaCategory);
 
         MetaData metaData = mapper.map(updateCategoryDto, MetaData.class);
         metaData.setUpdatedOn(new java.util.Date());

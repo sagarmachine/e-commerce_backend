@@ -24,35 +24,27 @@ public class Variant extends Item implements  Serializable {
     @Column(nullable = false)
     private double sellingPrice;
 
-     @OneToOne(mappedBy = "productMain", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+     @OneToOne(mappedBy = "mainVariant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
      Product productMain;
 
 //    @Formula("select")
     boolean complete=false;
 
-    @Embedded
-    private Image image;
+    @OneToOne
+    @JoinColumn
+    private VariantImage mainImage;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride( name = "thumbnail", column = @Column(name = "thumbnail_thumbnail")),
-            @AttributeOverride( name = "deleteUrl", column = @Column(name = "thumbnail_deleteUrl")),
-            @AttributeOverride( name = "main", column = @Column(name = "thumbnail_main"))
-    })
-    private Image thumbnail;
 
-    @CollectionTable
-    @ElementCollection
-    @OrderColumn
-    List<Image> images= new ArrayList<>();
+    @OneToOne
+    @JoinColumn
+    private VariantImage thumbnailImage;
+
+    @OneToMany(mappedBy = "variantAngle", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    Set<VariantImage> variantImages= new HashSet<>();
 
     @ManyToOne
     @JoinColumn
     Product product;
-
-    @OneToOne
-
-
 
     Integer threshold=null;
 
