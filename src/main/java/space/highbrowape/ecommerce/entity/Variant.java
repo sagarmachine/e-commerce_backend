@@ -32,6 +32,14 @@ public class Variant extends Item implements  Serializable {
     @Embedded
     private Image image;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "thumbnail", column = @Column(name = "thumbnail_thumbnail")),
+            @AttributeOverride( name = "deleteUrl", column = @Column(name = "thumbnail_deleteUrl")),
+            @AttributeOverride( name = "main", column = @Column(name = "thumbnail_main"))
+    })
+    private Image thumbnail;
+
     @CollectionTable
     @ElementCollection
     @OrderColumn
@@ -41,7 +49,7 @@ public class Variant extends Item implements  Serializable {
     @JoinColumn
     Product product;
 
-    Integer limit;
+    Integer threshold=null;
 
     @CollectionTable
     @ElementCollection
