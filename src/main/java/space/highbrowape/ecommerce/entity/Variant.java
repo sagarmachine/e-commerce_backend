@@ -68,6 +68,10 @@ public class Variant extends Item implements  Serializable {
     Gender gender=Gender.N;//default
 
 
+    @CollectionTable
+    @ElementCollection
+    List<FAQ> faqs= new ArrayList<>();
+
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     Set<VariantSize> variantSizeSet= new HashSet<>();
