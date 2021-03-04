@@ -24,7 +24,8 @@ public class Variant extends Item implements  Serializable {
     @Column(nullable = false)
     private double sellingPrice;
 
-
+     @OneToOne(mappedBy = "productMain", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+     Product productMain;
 
 //    @Formula("select")
     boolean complete=false;
@@ -48,6 +49,10 @@ public class Variant extends Item implements  Serializable {
     @ManyToOne
     @JoinColumn
     Product product;
+
+    @OneToOne
+
+
 
     Integer threshold=null;
 

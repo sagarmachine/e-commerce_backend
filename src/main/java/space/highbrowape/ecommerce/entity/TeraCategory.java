@@ -19,7 +19,7 @@ public class TeraCategory extends Category implements  Serializable {
 
 
     @OneToMany(mappedBy ="teraCategory",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<GigaCategory> gigaCategories= new HashSet<>();
+    Set<GigaCategory> categories= new HashSet<>();
 
 
 
@@ -31,10 +31,10 @@ public class TeraCategory extends Category implements  Serializable {
     }
 
     public void addGigaCategory(GigaCategory gigaCategory){
-        if(gigaCategories==null){
-            gigaCategories= new HashSet<GigaCategory>();
+        if(categories==null){
+            categories= new HashSet<GigaCategory>();
         }
-        gigaCategories.add(gigaCategory);
+        categories.add(gigaCategory);
         gigaCategory.setTeraCategory(this);
     }
 

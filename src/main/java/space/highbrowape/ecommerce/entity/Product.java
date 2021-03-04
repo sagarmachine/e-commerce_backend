@@ -32,6 +32,10 @@ public class Product extends Item implements Serializable {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Variant> variants;
 
+    @OneToOne
+    @JoinColumn
+    Variant mainVariant;
+
 
     public Product(String name, MetaData metaData,Brand brand, List<Category> categories) {
         this.name=name;
