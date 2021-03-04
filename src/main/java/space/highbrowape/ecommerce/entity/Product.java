@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -35,6 +36,28 @@ public class Product extends Item implements Serializable {
     @OneToOne
     @JoinColumn
     Variant mainVariant;
+
+    //for caching purpose----------------
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> extraChargeDetails;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> deliveryDetails;
+
+    @CollectionTable
+    @ElementCollection
+    @OrderColumn
+    List<String> returnDetails;
+
+
+    @CollectionTable
+    @ElementCollection
+    List<FAQ> faqs= new ArrayList<>();
+    //---------------------------------
 
 
     public Product(String name, MetaData metaData,Brand brand, List<Category> categories) {

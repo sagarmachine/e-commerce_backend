@@ -64,13 +64,15 @@ public class Variant extends Item implements  Serializable {
     List<String> returnDetails;
 
 
+    @CollectionTable
+    @ElementCollection
+    List<FAQ> faqs= new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
     Gender gender=Gender.N;//default
 
 
-    @CollectionTable
-    @ElementCollection
-    List<FAQ> faqs= new ArrayList<>();
+
 
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
