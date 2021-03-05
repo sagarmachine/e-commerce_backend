@@ -27,7 +27,7 @@ public class TeraCategoryServiceImpl implements ITeraCategoryService {
     TeraCategoryRepository teraCategoryRepository;
 
     @Autowired
-    IUtilService utilService;
+    UtilService utilService;
 
 
     ModelMapper mapper = new ModelMapper();

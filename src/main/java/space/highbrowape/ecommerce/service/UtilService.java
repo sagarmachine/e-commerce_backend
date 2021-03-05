@@ -1,5 +1,6 @@
 package space.highbrowape.ecommerce.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -14,30 +15,17 @@ import java.util.*;
 
 
 @Service
-public class UtilService implements IUtilService {
+public class UtilService  {
 
-    @Override
-    public  Image uploadImage(MultipartFile file){
+    @Autowired
+    IImageService imageService;
 
-        String url = "https://api.imgbb.com/1/upload?key=320af90c71366dd79d7cc0e77be63361";
-        MultiValueMap<String, Object> bodyMap = new LinkedMultiValueMap<>();
-        try {
+    @Autowired
+    IVideoService videoService;
 
-            bodyMap.add("image",   Base64.getEncoder().encodeToString(file.getBytes()));
-
-        } catch (Exception ex){
-            throw new ImageNotSavedException("image was not saved try a different image");
-        }
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ImgBBRes> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ImgBBRes.class);
-
-        ImgBBRes img= response.getBody();
-        return new Image(img.getData().getThumb().getUrl(),img.getData().getDisplay_url(),img.getData().getDelete_url());
-
+    public Image uploadImage(MultipartFile file){
+        return imageService.uploadImage(file);
     }
+    public void uploadVideo(MultipartFile file){ videoService.uploadVideo(file);}
+
 }
