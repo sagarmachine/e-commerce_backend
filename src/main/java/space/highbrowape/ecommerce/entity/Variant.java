@@ -68,11 +68,9 @@ public class Variant extends Item implements  Serializable {
     @ElementCollection
     List<FAQ> faqs= new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    Gender gender=Gender.N;//default
-
-
-
+    @ManyToMany
+    @JoinTable(name = "variant_gender", joinColumns = @JoinColumn(name = "variant_id"), inverseJoinColumns = @JoinColumn(name = "gender_id"))
+    Set<Gender> gender=new HashSet<>();//default
 
 
     @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
