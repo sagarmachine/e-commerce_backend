@@ -35,11 +35,15 @@ public class ProductServiceImpl  implements IProductService{
     ModelMapper mapper= new ModelMapper();
     @Override
     public Product addProduct(ProductDto addProductDto) {
-        Optional<Brand> brandOptional= brandRepository.findById(addProductDto.getBrandId());
-        if(!brandOptional.isPresent())
-            throw new BrandNotFoundException("No Brand Found With id :"+ addProductDto.getBrandId());
 
-        Brand brand= brandOptional.get();
+        Brand brand=null;
+        if(addProductDto.getBrandId()!=0) {
+            Optional<Brand> brandOptional = brandRepository.findById(addProductDto.getBrandId());
+            if (!brandOptional.isPresent())
+                throw new BrandNotFoundException("No Brand Found With id :" + addProductDto.getBrandId());
+            brand=brandOptional.get();
+        }
+
 
         List<Category> categories= categoryRepository.findByIdIn(addProductDto.getCategoryIds());
 

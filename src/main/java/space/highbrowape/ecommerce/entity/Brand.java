@@ -1,5 +1,6 @@
 package space.highbrowape.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Brand extends Item implements  Serializable {
 
 
     @OneToMany(mappedBy ="brand",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
     Set<Product> products;
 
 

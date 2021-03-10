@@ -1,9 +1,12 @@
 package space.highbrowape.ecommerce.dto.request;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @Data
@@ -34,6 +37,9 @@ public class VariantDto {
     }
 
     List<MultipartFile> files;
+
+    HashSet<Long> genders;
+    HashMap<Long, Long> sizes;
 
 
 }

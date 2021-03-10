@@ -22,7 +22,7 @@ public class Item {
     long id;
 
     @NotNull(message = "Name cannot be blank")
-    @Column(nullable = false,unique=true)
+    @Column(nullable = false)
     String name;
 
     @Embedded

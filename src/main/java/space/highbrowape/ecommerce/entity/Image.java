@@ -15,13 +15,13 @@ import java.io.Serializable;
 @Embeddable
 public class Image {
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String thumbnail;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String main;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @JsonIgnore
     String deleteUrl;
 

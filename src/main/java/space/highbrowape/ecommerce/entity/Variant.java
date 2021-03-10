@@ -1,5 +1,6 @@
 package space.highbrowape.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Formula;
 
@@ -24,8 +25,8 @@ public class Variant extends Item implements  Serializable {
     @Column(nullable = false)
     private double sellingPrice;
 
-     @OneToOne(mappedBy = "mainVariant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-     Product productMain;
+//     @OneToOne(mappedBy = "mainVariant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//     Product productMain;
 
 //    @Formula("select")
     boolean complete=false;
@@ -44,6 +45,7 @@ public class Variant extends Item implements  Serializable {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     Product product;
 
     Integer threshold=null;
@@ -68,12 +70,15 @@ public class Variant extends Item implements  Serializable {
     @ElementCollection
     List<FAQ> faqs= new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "variant_gender", joinColumns = @JoinColumn(name = "variant_id"), inverseJoinColumns = @JoinColumn(name = "gender_id"))
-    Set<Gender> gender=new HashSet<>();//default
+    Set<Gender> genders=new HashSet<>();//default
+//    public void addGender(Gender gender){
+//        genders.add(gender);
+//        gender.addVariant(this);
+//    }
 
-
-    @OneToMany(mappedBy ="variant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy ="variant",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
     Set<VariantSize> variantSizeSet= new HashSet<>();
 
 }

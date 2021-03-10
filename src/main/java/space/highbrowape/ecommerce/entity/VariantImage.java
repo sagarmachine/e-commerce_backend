@@ -17,13 +17,13 @@ public class VariantImage{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String thumbnail;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     String main;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @JsonIgnore
     String deleteUrl;
 

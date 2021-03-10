@@ -11,6 +11,21 @@ import space.highbrowape.ecommerce.exception.*;
 @ControllerAdvice
 public class ExceptionHandlerController {
 
+
+    @ExceptionHandler(value = NotFoundException.class)
+    public ResponseEntity<String[]> NotFoundException(NotFoundException ex){
+
+        return    new ResponseEntity<>(new String[]{ex.getMessage()}, HttpStatus.BAD_REQUEST);
+
+    }
+
+    @ExceptionHandler(value = AlreadyExistException.class)
+    public ResponseEntity<String[]> AlreadyExistException(AlreadyExistException ex){
+
+        return    new ResponseEntity<>(new String[]{ex.getMessage()}, HttpStatus.BAD_REQUEST);
+
+    }
+
        @ExceptionHandler(value = CategoryAlreadyExistException.class)
     public ResponseEntity<String[]> CategoryAlreadyExistExceptionHandler(CategoryAlreadyExistException ex){
 

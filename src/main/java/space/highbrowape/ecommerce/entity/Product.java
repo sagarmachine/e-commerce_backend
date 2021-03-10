@@ -1,11 +1,13 @@
 
 package space.highbrowape.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,8 +19,8 @@ import java.util.Set;
 @Entity
 public class Product extends Item implements Serializable {
 
-    @Column(nullable = false,unique = true)
-    String name;
+//    @Column(nullable = false,unique = true)
+//    String name;
 
 
     boolean complete=false;
@@ -27,15 +29,27 @@ public class Product extends Item implements Serializable {
     @JoinColumn
     Brand brand;
 
-    @ManyToMany(mappedBy = "products")
-    List<Category> categories;
+    @ManyToMany()
+    @JoinTable(name = "category_product", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JsonIgnore
+    List<Category> categories= new ArrayList<>();
+    public void addCategory(Category category)
+    {
+        categories.add(category);
+        category.addProduct(this);
+    }
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    Set<Variant> variants;
+    Set<Variant> variants= new HashSet<>();
 
-    @OneToOne
-    @JoinColumn
-    Variant mainVariant;
+    public void addVariant(Variant variant){
+        variants.add(variant);
+        variant.setProduct(this);
+    }
+
+//    @OneToOne
+//    @JoinColumn
+//    Variant mainVariant;
 
     //for caching purpose----------------
     @CollectionTable

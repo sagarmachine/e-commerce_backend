@@ -1,6 +1,7 @@
 package space.highbrowape.ecommerce.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,13 @@ import java.util.Set;
 //@Builder
 public class Category extends Item{
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable
+    @ManyToMany(mappedBy = "categories",fetch = FetchType.LAZY)
+     @JsonIgnore
     Set<Product> products= new HashSet<>();
+
+    public void addProduct(Product product)
+    {products.add(product);
+    }
 
     public Category(String name, Image image, MetaData metaData){
         super(name,image,metaData);
